@@ -6,10 +6,10 @@ const defaultMeta = {
   siteName: 'Likeness API',
   description:
     'A simple API to compare two texts and return a similarity score.',
-  url: 'https://tsnext-tw.thcl.dev',
+  url: 'https://likeness-api.vercel.app/',
   type: 'website',
   robots: 'follow, index',
-  image: 'https://tsnext-tw.thcl.dev/images/large-og.png',
+  image: 'https://likeness-api.vercel.app/',
 };
 
 type SeoProps = {
