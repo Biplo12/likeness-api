@@ -1,6 +1,6 @@
 import React from 'react';
 
-import VersionBadge from '@/components/HomePage/Partials/VersionBadge';
+import VersionBadge from '@/components/common/VersionBadge';
 const HomeHeader: React.FC = (): JSX.Element => {
   return (
     <div className='flex h-full w-full flex-col items-start justify-center gap-2'>
