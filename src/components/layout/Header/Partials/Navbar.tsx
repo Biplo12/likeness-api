@@ -1,3 +1,4 @@
+import { Menu } from 'lucide-react';
 import Link from 'next/link';
 import React from 'react';
 
@@ -15,19 +16,20 @@ const Navbar: React.FC = (): JSX.Element => {
   ];
   return (
     <nav className='flex items-center justify-center gap-4'>
-      <ul className='flex items-center justify-center gap-4'>
+      <ul className='mxsm:hidden flex items-center justify-center gap-4'>
         {navLinks.map((link, index) => (
           <li key={index}>
             <Link
               href={link.href}
-              className='hover:border-light-blue border-b border-transparent text-center text-xl font-medium leading-[1.4] tracking-tighter text-gray-300'
+              className='hover:border-light-blue border-b border-transparent text-center text-lg font-medium leading-[1.4] tracking-tighter text-gray-300 duration-150 ease-linear'
             >
               {link.name}
             </Link>
           </li>
         ))}
+        <SignInButton />
       </ul>
-      <SignInButton />
+      <Menu size={24} className='mxsm:block hidden text-gray-300' />
     </nav>
   );
 };

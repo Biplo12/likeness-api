@@ -44,7 +44,7 @@ const CodeBlocks: React.FC = (): JSX.Element => {
 
   return (
     <div
-      className='border-light-blue min-h-[535px] min-w-[800px] rounded-lg border'
+      className='border-light-blue h-[535px] w-[800px] rounded-lg border'
       style={{
         boxShadow: '0px 1px 100px -60px #007FFF',
       }}
