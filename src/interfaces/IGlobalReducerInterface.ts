@@ -1,3 +1,3 @@
 export default interface IGlobalReducerInterface {
-  selectedLanguage: string;
+  selectedResponseCode: number;
 }

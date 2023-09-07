@@ -1,7 +1,13 @@
 import { Highlight, themes } from 'prism-react-renderer';
 import React, { useEffect, useState } from 'react';
 
-const CodeBlocks: React.FC = (): JSX.Element => {
+interface ICodeBlocksProps {
+  anim?: boolean;
+}
+
+const CodeBlocks: React.FC<ICodeBlocksProps> = ({
+  anim = true,
+}): JSX.Element => {
   const nodeJSText = `
     import axios from 'axios';
 
@@ -49,7 +55,11 @@ const CodeBlocks: React.FC = (): JSX.Element => {
         boxShadow: '0px 1px 100px -60px #007FFF',
       }}
     >
-      <Highlight code={text} language='javascript' theme={themes.nightOwl}>
+      <Highlight
+        code={anim ? text : nodeJSText}
+        language='javascript'
+        theme={themes.nightOwl}
+      >
         {({ className, tokens, getLineProps, getTokenProps }) => (
           <pre
             className={

@@ -1,9 +1,13 @@
 import { Menu } from 'lucide-react';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import React from 'react';
 
 import SignInButton from '@/components/layout/Header/Partials/SignInButton';
 const Navbar: React.FC = (): JSX.Element => {
+  const router = useRouter();
+  const activeLink = router.pathname;
+
   const navLinks = [
     {
       name: 'Home',
@@ -21,7 +25,9 @@ const Navbar: React.FC = (): JSX.Element => {
           <li key={index}>
             <Link
               href={link.href}
-              className='hover:border-light-blue border-b border-transparent text-center text-lg font-medium leading-[1.4] tracking-tighter text-gray-300 duration-150 ease-linear'
+              className={`border-b border-transparent text-center text-lg font-medium leading-[1.4] tracking-tighter text-gray-300 duration-150 ${
+                activeLink === link.href ? 'text-light-blue' : ''
+              }`}
             >
               {link.name}
             </Link>
