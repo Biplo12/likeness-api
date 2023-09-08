@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Logo from '@/components/layout/Header/Partials/Logo';
+import Logo from '@/components/common/Logo';
 import Navbar from '@/components/layout/Header/Partials/Navbar';
 const Header: React.FC = (): JSX.Element => {
   return (

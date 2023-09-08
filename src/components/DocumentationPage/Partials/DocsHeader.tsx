@@ -1,7 +1,7 @@
 import React from 'react';
 
-import ApiKeyBadge from '@/components/common/ApiKeyBadge';
 import VersionBadge from '@/components/common/VersionBadge';
+import ApiKeyBadge from '@/components/DocumentationPage/Partials/ApiKeyBadge';
 const DocsHeader: React.FC = (): JSX.Element => {
   return (
     <div className='flex flex-col items-start justify-center gap-4'>

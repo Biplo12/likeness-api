@@ -4,8 +4,8 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React from 'react';
 
-import LogoutButton from '@/components/Auth/LogoutButton';
-import SignInButton from '@/components/Auth/SignInButton';
+import LogoutButton from '@/components/AuthButtons/LogoutButton';
+import SignInButton from '@/components/AuthButtons/SignInButton';
 import SpinnerButton from '@/components/common/SpinnerButton';
 import DashboardButton from '@/components/layout/Header/Partials/DashboardButton';
 const Navbar: React.FC = (): JSX.Element => {
