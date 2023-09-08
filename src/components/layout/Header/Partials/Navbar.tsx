@@ -1,13 +1,18 @@
+import { useUser } from '@clerk/nextjs';
 import { Menu } from 'lucide-react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React from 'react';
 
+import LogoutButton from '@/components/Auth/LogoutButton';
 import SignInButton from '@/components/Auth/SignInButton';
+import SpinnerButton from '@/components/common/SpinnerButton';
+import DashboardButton from '@/components/layout/Header/Partials/DashboardButton';
 const Navbar: React.FC = (): JSX.Element => {
   const router = useRouter();
   const activeLink = router.pathname;
-
+  const { isSignedIn, isLoaded } = useUser();
+  const isOnDashboard = router.pathname === '/dashboard';
   const navLinks = [
     {
       name: 'Home',
@@ -25,7 +30,7 @@ const Navbar: React.FC = (): JSX.Element => {
           <li key={index}>
             <Link
               href={link.href}
-              className={`border-b border-transparent text-center text-lg font-medium leading-[1.4] tracking-tighter text-gray-300 duration-150 ${
+              className={`hover:text-light-blue border-b border-transparent text-center text-lg font-medium leading-[1.4] tracking-tighter text-gray-300 duration-150 ${
                 activeLink === link.href ? 'text-light-blue' : ''
               }`}
             >
@@ -33,7 +38,15 @@ const Navbar: React.FC = (): JSX.Element => {
             </Link>
           </li>
         ))}
-        <SignInButton />
+        {!isLoaded ? (
+          <SpinnerButton />
+        ) : isOnDashboard ? (
+          <LogoutButton />
+        ) : isSignedIn ? (
+          <DashboardButton />
+        ) : (
+          <SignInButton />
+        )}
       </ul>
       <Menu size={24} className='mxsm:block hidden text-gray-300' />
     </nav>

@@ -1,6 +1,6 @@
+import { ClerkProvider } from '@clerk/nextjs';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { AppProps } from 'next/app';
-import { SessionProvider } from 'next-auth/react';
 import { Provider } from 'react-redux';
 
 import '@/styles/globals.css';
@@ -18,9 +18,9 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <Provider store={store}>
       <QueryClientProvider client={queryClient}>
-        <SessionProvider>
+        <ClerkProvider {...pageProps}>
           <Component {...pageProps} />
-        </SessionProvider>
+        </ClerkProvider>
       </QueryClientProvider>
     </Provider>
   );

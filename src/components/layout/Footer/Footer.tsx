@@ -1,6 +1,6 @@
 import { GithubIcon, LinkedinIcon, MailIcon } from 'lucide-react';
 import Link from 'next/link';
-import React from 'react';
+import React, { Fragment } from 'react';
 const Footer: React.FC = (): JSX.Element => {
   const footerLinks = [
     {
@@ -24,7 +24,7 @@ const Footer: React.FC = (): JSX.Element => {
       <div className='flex flex-col items-center justify-center gap-2'>
         <div className='flex items-center justify-center gap-2'>
           {footerLinks.map((link, index) => (
-            <>
+            <Fragment key={index}>
               <Link
                 key={index}
                 href={link.url}
@@ -37,7 +37,7 @@ const Footer: React.FC = (): JSX.Element => {
               {index !== footerLinks.length - 1 && (
                 <div className='text-dark-white font-bold opacity-25'>/</div>
               )}
-            </>
+            </Fragment>
           ))}
         </div>
         <p className='text-dark-white text-center text-sm font-medium leading-[1.4] tracking-tighter opacity-25'>
