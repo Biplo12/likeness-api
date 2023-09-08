@@ -2,7 +2,7 @@ import React from 'react';
 
 import ApiKeyBadge from '@/components/common/ApiKeyBadge';
 import VersionBadge from '@/components/common/VersionBadge';
-const ResponseHeader: React.FC = (): JSX.Element => {
+const DocsHeader: React.FC = (): JSX.Element => {
   return (
     <div className='flex flex-col items-start justify-center gap-4'>
       <div className='flex items-center justify-center gap-4'>
@@ -18,4 +18,4 @@ const ResponseHeader: React.FC = (): JSX.Element => {
     </div>
   );
 };
-export default ResponseHeader;
+export default DocsHeader;

@@ -1,15 +1,23 @@
 import React from 'react';
 
-import Request from '@/components/DocumentationPage/Partials/Request';
-import Response from '@/components/DocumentationPage/Partials/Response';
-import ResponseHeader from '@/components/DocumentationPage/Partials/ResponseHeader';
+import DocsHeader from '@/components/DocumentationPage/Partials/DocsHeader';
+import EndPointBadge from '@/components/DocumentationPage/Partials/Request/EndPointBadge';
+import MethodBadge from '@/components/DocumentationPage/Partials/Request/MethodBadge';
+import ResponseBlock from '@/components/DocumentationPage/Partials/ResponseBlock';
+import ResponseCodeSwitcher from '@/components/DocumentationPage/Partials/ResponseCodeSwitcher';
 const Documentation: React.FC = (): JSX.Element => {
   return (
-    <div className='flex h-full w-full  flex-col items-center justify-center'>
-      <div className='flex min-w-[1000px] flex-col items-start justify-center gap-12'>
-        <ResponseHeader />
-        <Request />
-        <Response />
+    <div className='flex h-full w-full flex-col items-center justify-center'>
+      <div className='flex flex-col items-start justify-center gap-4'>
+        <div className='flex items-center justify-center gap-4'>
+          <MethodBadge method='POST' />
+          <EndPointBadge endPoint='/api/v1/likeness' />
+        </div>
+        <DocsHeader />
+        <div className='flex flex-col items-start justify-center gap-4'>
+          <ResponseCodeSwitcher />
+          <ResponseBlock />
+        </div>
       </div>
     </div>
   );

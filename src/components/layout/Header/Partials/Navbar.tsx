@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React from 'react';
 
-import SignInButton from '@/components/layout/Header/Partials/SignInButton';
+import SignInButton from '@/components/Auth/SignInButton';
 const Navbar: React.FC = (): JSX.Element => {
   const router = useRouter();
   const activeLink = router.pathname;
