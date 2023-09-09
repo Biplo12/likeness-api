@@ -2,6 +2,7 @@ import { LockIcon } from 'lucide-react';
 import React from 'react';
 
 import CopyButton from '@/components/DashboardPage/Partials/CopyButton';
+import RevokeButton from '@/components/DashboardPage/Partials/RevokeButton';
 import ViewKeyButton from '@/components/DashboardPage/Partials/ViewKeyButton';
 
 import { useAppSelector } from '@/store/store-hooks';
@@ -16,7 +17,9 @@ const ApiKey: React.FC = (): JSX.Element => {
       result += chars[Math.floor(Math.random() * chars.length)];
     return result;
   };
+
   const apiKey = randomString();
+
   return (
     <div className='flex flex-col items-center justify-center'>
       <div className='flex flex-col items-start justify-center gap-4'>
@@ -43,6 +46,7 @@ const ApiKey: React.FC = (): JSX.Element => {
           <ViewKeyButton />
           <CopyButton apiKey={apiKey} />
         </div>
+        <RevokeButton />
       </div>
     </div>
   );
