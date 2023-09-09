@@ -1,5 +1,7 @@
 import { Highlight, themes } from 'prism-react-renderer';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+
+import useCodeAnim from '@/hooks/useCodeAnim';
 
 interface ICodeBlocksProps {
   anim?: boolean;
@@ -30,23 +32,7 @@ const CodeBlocks: React.FC<ICodeBlocksProps> = ({
       console.error(error);
     }
   `;
-  const [text, setText] = useState('');
-  const animationDelay = 150;
-
-  useEffect(() => {
-    let i = 0;
-    setTimeout(() => {
-      const intervalId = setInterval(() => {
-        setText(nodeJSText.slice(0, i));
-        i++;
-        if (i > nodeJSText.length) {
-          clearInterval(intervalId);
-        }
-      }, 15);
-
-      return () => clearInterval(intervalId);
-    }, animationDelay);
-  }, [nodeJSText]);
+  const { text } = useCodeAnim(nodeJSText);
 
   return (
     <div

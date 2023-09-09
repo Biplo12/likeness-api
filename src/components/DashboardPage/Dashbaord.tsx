@@ -1,16 +1,15 @@
-import { useUser } from '@clerk/nextjs';
 import React from 'react';
 
 import ApiKey from '@/components/DashboardPage/Partials/ApiKey';
+import DashboardHeader from '@/components/DashboardPage/Partials/DashboardHeader';
 
 const Dashbaord: React.FC = (): JSX.Element => {
-  const { user } = useUser();
   return (
     <div className='flex h-full w-full flex-col items-center justify-center gap-4 py-8'>
-      <h1 className='text-5xl font-medium leading-[1.4] tracking-tighter text-gray-300'>
-        Welcome back, <span className='text-primary'>{user?.fullName}</span>
-      </h1>
-      <ApiKey />
+      <div className='flex flex-col items-start justify-center gap-4'>
+        <DashboardHeader />
+        <ApiKey />
+      </div>
     </div>
   );
 };

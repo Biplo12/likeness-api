@@ -1,20 +1,28 @@
 import { Eye, EyeOff } from 'lucide-react';
-import React, { useState } from 'react';
+import React from 'react';
+
+import { useAppDispatch, useAppSelector } from '@/store/store-hooks';
+
+import { toggleKeyVisibility } from '@/state/globalSlice';
 const ViewKeyButton: React.FC = (): JSX.Element => {
-  const [isKeyVisible, setIsKeyVisible] = useState<boolean>(false);
+  const isKeyVisible = useAppSelector((state) => state.global.isKeyHidden);
+  const dispatch = useAppDispatch();
+  const handleKeyVisibility = () => {
+    dispatch(toggleKeyVisibility());
+  };
   return (
-    <button className='bg-darker-bg hover:text-light-blue hover:border-light-blue border-dark-white text-dark-white flex items-center justify-center rounded-full border border-opacity-25 px-4 py-2.5 font-bold shadow-lg duration-150 ease-linear hover:border hover:border-opacity-100 disabled:cursor-not-allowed disabled:opacity-50'>
-      {isKeyVisible ? (
+    <button>
+      {!isKeyVisible ? (
         <EyeOff
           size={24}
           className='inline-block'
-          onClick={() => setIsKeyVisible(!isKeyVisible)}
+          onClick={() => handleKeyVisibility()}
         />
       ) : (
         <Eye
           size={24}
           className='inline-block'
-          onClick={() => setIsKeyVisible(!isKeyVisible)}
+          onClick={() => handleKeyVisibility()}
         />
       )}
     </button>

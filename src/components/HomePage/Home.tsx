@@ -1,7 +1,7 @@
 import React from 'react';
 
-import CodeBlocks from '@/components/common/CodeBlocks';
 import CheckDocumentation from '@/components/HomePage/Partials/CheckDocumentation';
+import CodeBlocks from '@/components/HomePage/Partials/CodeBlocks';
 import HomeHeader from '@/components/HomePage/Partials/HomeHeader';
 import TryItButton from '@/components/HomePage/Partials/TryItButton';
 const Home: React.FC = (): JSX.Element => {

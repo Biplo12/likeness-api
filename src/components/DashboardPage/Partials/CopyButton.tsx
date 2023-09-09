@@ -1,10 +1,40 @@
 import { CopyIcon } from 'lucide-react';
 import React from 'react';
-const CopyButton: React.FC = (): JSX.Element => {
+import { Tooltip } from 'react-tooltip';
+
+import useCopyToClipboard from '@/hooks/useCopyToClipboard';
+
+interface ICopyButtonProps {
+  apiKey: string;
+}
+
+const CopyButton: React.FC<ICopyButtonProps> = ({ apiKey }): JSX.Element => {
+  const { isCopied, handleCopyToClipboard } = useCopyToClipboard();
+
   return (
-    <button className='bg-darker-bg hover:text-light-blue hover:border-light-blue border-dark-white text-dark-white flex items-center justify-center rounded-full border border-opacity-25 px-4 py-2.5 font-bold shadow-lg duration-150 ease-linear hover:border hover:border-opacity-100 disabled:cursor-not-allowed disabled:opacity-50'>
-      <CopyIcon size={24} className='inline-block' />
-    </button>
+    <>
+      <Tooltip
+        id='copy-key'
+        place='top'
+        style={{
+          backgroundColor: isCopied ? '#18AC7A' : '#000',
+        }}
+      >
+        {isCopied && (
+          <div className='text-center text-xs'>
+            <p className='font-bold'>Copied!</p>
+          </div>
+        )}
+      </Tooltip>
+
+      <button
+        data-tip
+        data-tooltip-id='copy-key'
+        onClick={() => handleCopyToClipboard(apiKey)}
+      >
+        <CopyIcon size={24} className='inline-block' />
+      </button>
+    </>
   );
 };
 export default CopyButton;

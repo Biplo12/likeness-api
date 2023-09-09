@@ -1,24 +1,14 @@
 /* eslint-disable @next/next/no-img-element */
-import { useSignIn } from '@clerk/nextjs';
 import React from 'react';
+
+import useLogin from '@/hooks/useLogin';
 const LoginButtons: React.FC = (): JSX.Element => {
-  const { signIn } = useSignIn();
+  const { handleLoginOAuth } = useLogin();
   const loginProviders = [
     { name: 'Google', icon: '/svg/google.svg', provider: 'google' },
     { name: 'Github', icon: '/svg/github.svg', provider: 'github' },
   ];
 
-  const handleLoginOAuth = async (provider: string) => {
-    try {
-      await signIn?.authenticateWithRedirect({
-        strategy: `oauth_${provider}` as 'oauth_google' | 'oauth_github',
-        redirectUrl: `${window.location.origin}/dashboard`,
-        redirectUrlComplete: `${window.location.origin}/dashboard`,
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  };
   return (
     <>
       {loginProviders.map((provider) => (
