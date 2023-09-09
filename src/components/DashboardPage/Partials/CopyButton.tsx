@@ -17,12 +17,12 @@ const CopyButton: React.FC<ICopyButtonProps> = ({ apiKey }): JSX.Element => {
         id='copy-key'
         place='top'
         style={{
-          backgroundColor: isCopied ? '#18AC7A' : '#000',
+          backgroundColor: isCopied ? '#007FFF' : '#000',
         }}
       >
         {isCopied && (
-          <div className='text-center text-xs'>
-            <p className='font-bold'>Copied!</p>
+          <div className='font-bold leading-[1.4] tracking-tighter text-gray-300'>
+            Copied!
           </div>
         )}
       </Tooltip>

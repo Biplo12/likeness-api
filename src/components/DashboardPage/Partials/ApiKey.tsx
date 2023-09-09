@@ -18,7 +18,7 @@ const ApiKey: React.FC = (): JSX.Element => {
   };
   const apiKey = randomString();
   return (
-    <div className='flex flex-col items-center justify-center py-8'>
+    <div className='flex flex-col items-center justify-center'>
       <div className='flex flex-col items-start justify-center gap-4'>
         <h1 className='flex items-center justify-center gap-2 text-xl font-medium leading-[1.4] tracking-tighter text-gray-300'>
           <LockIcon size={24} className='text-light-blue inline-block' /> Your
