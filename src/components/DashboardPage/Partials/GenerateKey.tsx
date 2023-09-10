@@ -1,6 +1,11 @@
 import { KeySquare, LockIcon } from 'lucide-react';
 import React from 'react';
+
+import useGenerateKey from '@/hooks/useGenerateKey';
+
+import Spinner from '@/components/common/Spinner';
 const GenerateKey: React.FC = (): JSX.Element => {
+  const { generateKey, isLoading } = useGenerateKey();
   return (
     <div className='flex flex-col items-start justify-center gap-4'>
       <h1 className='flex items-center justify-center gap-2 text-xl font-medium leading-[1.4] tracking-tighter text-gray-300'>
@@ -12,9 +17,18 @@ const GenerateKey: React.FC = (): JSX.Element => {
         be displayed on the next page. Please keep it safe and do not share it
         with anyone.
       </p>
-      <button className='bg-darker-bg hover:border-light-blue border-dark-white text-dark-white flex min-w-[300px] items-center justify-center gap-2 rounded-full border border-opacity-25 px-6 py-2.5 font-bold shadow-lg duration-150 ease-linear hover:border hover:border-opacity-100 disabled:cursor-not-allowed disabled:opacity-50'>
-        <KeySquare className='h-6 w-6' />
-        <span className='inline-block'>Generate Key</span>
+      <button
+        className='bg-darker-bg hover:border-light-blue border-dark-white text-dark-white flex min-w-[300px] items-center justify-center gap-2 rounded-full border border-opacity-25 px-6 py-2.5 font-bold shadow-lg duration-150 ease-linear hover:border hover:border-opacity-100 disabled:cursor-not-allowed disabled:opacity-50'
+        onClick={generateKey}
+      >
+        {isLoading ? (
+          <Spinner />
+        ) : (
+          <>
+            <KeySquare className='h-6 w-6' />
+            <span className='inline-block'>Generate Key</span>
+          </>
+        )}
       </button>
     </div>
   );

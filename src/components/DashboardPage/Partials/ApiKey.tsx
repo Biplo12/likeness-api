@@ -7,18 +7,12 @@ import ViewKeyButton from '@/components/DashboardPage/Partials/ViewKeyButton';
 
 import { useAppSelector } from '@/store/store-hooks';
 
-const ApiKey: React.FC = (): JSX.Element => {
-  const isKeyHidden = useAppSelector((state) => state.global.isKeyHidden);
-  const randomString = () => {
-    const chars =
-      '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    let result = '';
-    for (let i = 32; i > 0; --i)
-      result += chars[Math.floor(Math.random() * chars.length)];
-    return result;
-  };
+interface IApiKeyProps {
+  apiKey: string;
+}
 
-  const apiKey = randomString();
+const ApiKey: React.FC<IApiKeyProps> = ({ apiKey }): JSX.Element => {
+  const isKeyHidden = useAppSelector((state) => state.global.isKeyHidden);
 
   return (
     <div className='flex flex-col items-center justify-center'>

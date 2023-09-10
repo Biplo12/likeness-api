@@ -7,6 +7,7 @@ import IGlobalReducerInterface from '@/interfaces/IGlobalReducerInterface';
 const initialState: IGlobalReducerInterface = {
   selectedResponseCode: 200,
   isKeyHidden: true,
+  apiKey: null,
 };
 
 const slice = createSlice({
@@ -19,10 +20,21 @@ const slice = createSlice({
     toggleKeyVisibility: (state) => {
       state.isKeyHidden = !state.isKeyHidden;
     },
+    setApiKey: (state, action) => {
+      state.apiKey = action.payload;
+    },
+    setInitialUserState: (state) => {
+      state.apiKey = initialState.apiKey;
+    },
   },
 });
 
 const { actions, reducer } = slice;
-export const { setResponseCode, toggleKeyVisibility } = actions;
+export const {
+  setResponseCode,
+  toggleKeyVisibility,
+  setApiKey,
+  setInitialUserState,
+} = actions;
 export const selectGlobal = (state: RootState) => state.global;
 export default reducer;
