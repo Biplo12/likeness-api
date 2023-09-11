@@ -10,7 +10,7 @@ const useGetKey = () => {
   const { user } = useUser();
   const apiKey = useAppSelector((state) => state.global.apiKey);
   const dispatch = useAppDispatch();
-  const { refetch: getKey, isLoading } = useQuery({
+  const { refetch: getKey } = useQuery({
     queryKey: ['getKey'],
     queryFn: async () => {
       const res = await axios.get('/api/key/getKey', {
@@ -30,7 +30,7 @@ const useGetKey = () => {
       console.error(error);
     }
   };
-  return { getKey: handleGetKey, getKeyLoading: isLoading };
+  return { getKey: handleGetKey };
 };
 
 export default useGetKey;

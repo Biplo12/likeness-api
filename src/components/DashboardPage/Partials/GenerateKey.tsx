@@ -1,7 +1,7 @@
 import { KeySquare, LockIcon } from 'lucide-react';
 import React from 'react';
 
-import useGenerateKey from '@/hooks/useGenerateKey';
+import useGenerateKey from '@/hooks/tanstack/useGenerateKey';
 
 import Spinner from '@/components/common/Spinner';
 const GenerateKey: React.FC = (): JSX.Element => {

@@ -4,29 +4,28 @@ import axios from 'axios';
 
 import { useAppDispatch } from '@/store/store-hooks';
 
-import { setApiKey } from '@/state/globalSlice';
+import { setInitialUserState } from '@/state/globalSlice';
 
-const useGenerateKey = () => {
+const useRevokeKey = () => {
   const { user } = useUser();
   const dispatch = useAppDispatch();
   const { mutateAsync, isLoading } = useMutation({
-    mutationKey: ['generateKey'],
+    mutationKey: ['revokeKey'],
     mutationFn: async () => {
-      const res = await axios.post('/api/key/create', { user });
+      const res = await axios.post('/api/key/revoke', { user });
       return res.data;
     },
   });
 
-  const handleGenerateKey = async () => {
+  const handleRevokeKey = async () => {
     try {
-      const res = await mutateAsync();
-      console.log(res);
-      dispatch(setApiKey(res.data.key));
+      await mutateAsync();
+      dispatch(setInitialUserState());
     } catch (error) {
       console.error(error);
     }
   };
-  return { generateKey: handleGenerateKey, isLoading };
+  return { revokeKey: handleRevokeKey, isLoading };
 };
 
-export default useGenerateKey;
+export default useRevokeKey;

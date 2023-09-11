@@ -3,8 +3,8 @@ import React from 'react';
 import DocsHeader from '@/components/DocumentationPage/Partials/DocsHeader';
 import EndPointBadge from '@/components/DocumentationPage/Partials/Request/EndPointBadge';
 import MethodBadge from '@/components/DocumentationPage/Partials/Request/MethodBadge';
-import ResponseBlock from '@/components/DocumentationPage/Partials/ResponseBlock';
-import ResponseCodeSwitcher from '@/components/DocumentationPage/Partials/ResponseCodeSwitcher';
+import ResponseBlock from '@/components/DocumentationPage/Partials/Response/ResponseBlock';
+import ResponseCodeSwitcher from '@/components/DocumentationPage/Partials/Response/ResponseCodeSwitcher';
 const Documentation: React.FC = (): JSX.Element => {
   return (
     <div className='flex h-full w-full flex-col items-center justify-center'>

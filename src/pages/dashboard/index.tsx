@@ -3,22 +3,25 @@ import { useUser } from '@clerk/nextjs';
 import { useRouter } from 'next/router';
 import React, { useEffect } from 'react';
 
-import useGetKey from '@/hooks/useGetKey';
-import useSaveUser from '@/hooks/useSaveUser';
+import useGetKey from '@/hooks/tanstack/useGetKey';
+import useSaveUser from '@/hooks/tanstack/useSaveUser';
 
 import Dashboard from '@/components/DashboardPage/Dashbaord';
 import DashboardLoading from '@/components/DashboardPage/Partials/DashboardLoading';
 import Layout from '@/components/layout/Layout';
 import Seo from '@/components/Seo';
 
+import { useAppSelector } from '@/store/store-hooks';
+
 export default function DashboardPage() {
+  const { isUserSaved } = useAppSelector((state) => state.global);
   const { isSignedIn, isLoaded } = useUser();
   const router = useRouter();
-  const { saveUser, saveUserLoading } = useSaveUser();
-  const { getKey, getKeyLoading } = useGetKey();
+  const { saveUser } = useSaveUser();
+  const { getKey } = useGetKey();
 
   useEffect(() => {
-    if (!isLoaded || !isSignedIn) {
+    if (isLoaded && !isSignedIn) {
       router.push('/');
     }
   }, [isLoaded, isSignedIn, router]);
@@ -39,7 +42,7 @@ export default function DashboardPage() {
     <Layout>
       <Seo />
       <main className='bg-dark-bg text-dark-white flex h-full min-h-[92.5vh] w-full items-center justify-center'>
-        {(isSignedIn && isLoaded) || saveUserLoading || getKeyLoading ? (
+        {isSignedIn && isLoaded && isUserSaved ? (
           <Dashboard />
         ) : (
           <DashboardLoading />

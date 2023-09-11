@@ -28,7 +28,7 @@ const ApiKey: React.FC<IApiKeyProps> = ({ apiKey }): JSX.Element => {
         <div
           className='bg-darker-bg border-light-blue text-dark-white flex h-[50px] w-full items-center justify-center gap-4 overflow-hidden rounded-md border p-2.5 font-bold shadow-lg'
           style={{
-            boxShadow: '0px 1px 100px -20px #007FFF',
+            boxShadow: '0px 1px 100px -22px #007FFF',
           }}
         >
           <input

@@ -9,27 +9,30 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
     if (!user) {
       return res.status(401).json({
-        message: 'You must be logged in.',
+        message: 'You must be logged in to revoke an API key.',
       });
     }
 
-    const isUserInDb = await db.user.findFirst({
-      where: { userId: user?.id },
+    const existingApiKey = await db.apiKey.findFirst({
+      where: { userId: user?.id, enabled: true },
     });
 
-    if (!isUserInDb) {
-      await db.user.create({
-        data: {
-          userId: user?.id,
-          image: user?.imageUrl,
-          name: user?.fullName,
-          email: user?.emailAddresses?.[0]?.emailAddress,
-        },
-      });
-      return res.status(200).json({ message: 'Account created' });
+    if (!existingApiKey) {
+      return res
+        .status(500)
+        .json({ message: 'This API key could not be revoked.' });
     }
 
-    return res.status(200).json({ message: 'Account already exists' });
+    await db.apiKey.update({
+      where: { id: existingApiKey.id },
+      data: {
+        enabled: false,
+      },
+    });
+
+    return res
+      .status(200)
+      .json({ message: 'API key revoked.', data: existingApiKey });
   } catch (error) {
     if (error) {
       return res.status(400).json({ message: `${error}` });
