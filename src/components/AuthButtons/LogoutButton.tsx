@@ -1,7 +1,7 @@
 import { LogOut } from 'lucide-react';
 import React from 'react';
 
-import useSignOut from '@/hooks/useSignOut';
+import useSignOut from '@/hooks/auth/useSignOut';
 
 import Spinner from '@/components/common/Spinner';
 const LogoutButton: React.FC = (): JSX.Element => {

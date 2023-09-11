@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import React from 'react';
 
-import useLogin from '@/hooks/useLogin';
+import useLogin from '@/hooks/auth/useLogin';
 const LoginButtons: React.FC = (): JSX.Element => {
   const { handleLoginOAuth } = useLogin();
   const loginProviders = [
