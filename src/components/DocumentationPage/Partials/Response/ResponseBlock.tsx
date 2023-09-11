@@ -11,9 +11,16 @@ const ResponseBlock: React.FC = (): JSX.Element => {
       code: 200,
       response: `
     {
-      "data": {
-        "likeness": 0.7
-      }
+      message: "Success",
+      likeness: 0.7
+    }
+  `,
+    },
+    {
+      code: 400,
+      response: `
+    {
+      message: "Bad Request. Missing a required parameter",
     }
   `,
     },
@@ -21,9 +28,7 @@ const ResponseBlock: React.FC = (): JSX.Element => {
       code: 401,
       response: `
     {
-      "error": {
-        "message": "Unauthorized"
-      }
+      message: "Unauthorized. Missing API Key"
     }
   `,
     },
@@ -31,9 +36,7 @@ const ResponseBlock: React.FC = (): JSX.Element => {
       code: 403,
       response: `
     {
-      "error": {
-        "message": "Forbidden"
-      }
+      message: "Forbidden"
     }
   `,
     },

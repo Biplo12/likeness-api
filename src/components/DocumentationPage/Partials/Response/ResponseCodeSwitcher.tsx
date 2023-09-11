@@ -8,7 +8,7 @@ const ResponseCodeSwitcher: React.FC = (): JSX.Element => {
   const selectedCode = useAppSelector(
     (state) => state.global.selectedResponseCode
   );
-  const codes = [200, 401, 403];
+  const codes = [200, 400, 401, 403];
 
   const handleCodeClick = (code: number) => {
     dispatch(setResponseCode(code));

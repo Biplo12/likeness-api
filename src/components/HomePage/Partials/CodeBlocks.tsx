@@ -15,7 +15,7 @@ const CodeBlocks: React.FC<ICodeBlocksProps> = ({
 
     const options = {
       method: 'POST',
-      url: 'https://likeness.com/api/v1/likeness',
+      url: 'https://likeness-api.vercel.app/api/v1/likeness',
       data: {
         text1: 'First text',
         text2: 'Second text'

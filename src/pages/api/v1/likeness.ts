@@ -26,7 +26,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     });
 
     if (!validApiKey) {
-      return res.status(401).json({ message: 'Unauthorized' });
+      return res.status(401).json({ message: 'Unauthorized. Invalid API Key' });
     }
     const calculateLikeness = (text1: string, text2: string) => {
       const text1Array = text1.split('');
@@ -61,7 +61,9 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       },
     });
 
-    return res.status(200).json({ likeness: calculateLikeness(text1, text2) });
+    return res
+      .status(200)
+      .json({ message: 'Success', likeness: calculateLikeness(text1, text2) });
   } catch (error) {
     if (error) {
       return res.status(400).json({ message: `${error}` });
