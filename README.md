@@ -1,6 +1,6 @@
 # Likeness API v1 Documentation
 
-Welcome to the Likeness API v1 documentation. Likeness API allows you to compare the similarity between two texts. To use this API, you need to sign in with your Google or GitHub account, generate an API key, and include it in the headers of your requests. This API is built using Next.js, TypeScript, Clerk, and Redux.
+Welcome to the Likeness API v1 documentation. Likeness API allows you to compare the similarity between two texts. To use this API, you need to sign in with your Google or GitHub account, generate an API key, and include it in the headers of your requests. This API is built using Next.js, TypeScript, Tailwind CSS, Clerk, Redux, MongoDB, Prisma.
 
 ## Table of Contents
 
