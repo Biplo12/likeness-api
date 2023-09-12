@@ -1,20 +1,17 @@
 import { PrismaClient } from '@prisma/client';
 
-import { isProd } from '@/constant/env';
+import { isLocal } from '@/constant/env';
 
-declare global {
-  // eslint-disable-next-line no-var, no-unused-vars
-  var cachedPrisma: PrismaClient;
-}
+// Prisma NextJS Hot Reloading
 
-let prisma: PrismaClient;
-if (isProd) {
-  prisma = new PrismaClient();
-} else {
-  if (!global.cachedPrisma) {
-    global.cachedPrisma = new PrismaClient();
-  }
-  prisma = global.cachedPrisma;
-}
+const globalForPrisma = global as unknown as { prisma: PrismaClient };
+
+const prisma =
+  globalForPrisma.prisma ||
+  new PrismaClient({
+    log: ['query'],
+  });
+
+if (isLocal) globalForPrisma.prisma = prisma;
 
 export const db = prisma;
