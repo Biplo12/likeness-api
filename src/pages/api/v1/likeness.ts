@@ -2,10 +2,10 @@ import { NextApiRequest, NextApiResponse } from 'next';
 
 import { method } from '@/lib/api/method';
 import { db } from '@/lib/db';
+
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     const { text1, text2 } = req.body;
-
     if (!text1 || !text2) {
       return res
         .status(400)
