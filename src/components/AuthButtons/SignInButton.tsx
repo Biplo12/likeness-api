@@ -3,8 +3,7 @@ import { useRouter } from 'next/router';
 import React from 'react';
 const SignInButton: React.FC = (): JSX.Element => {
   const router = useRouter();
-  const isSignInPage = router.pathname === '/sign-in';
-
+  const isSignInPage = router.pathname === '/sign-in/[[...index]]';
   const handleSignIn = () => {
     if (!isSignInPage) {
       router.push('/sign-in');

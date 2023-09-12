@@ -20,6 +20,7 @@ const GenerateKey: React.FC = (): JSX.Element => {
       <button
         className='bg-darker-bg hover:border-light-blue border-dark-white text-dark-white flex min-w-[300px] items-center justify-center gap-2 rounded-full border border-opacity-25 px-6 py-2.5 font-bold shadow-lg duration-150 ease-linear hover:border hover:border-opacity-100 disabled:cursor-not-allowed disabled:opacity-50'
         onClick={generateKey}
+        disabled={isLoading}
       >
         {isLoading ? (
           <Spinner />
