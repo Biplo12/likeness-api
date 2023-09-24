@@ -1,17 +1,17 @@
-import { useSignIn } from '@clerk/nextjs';
+import { useSignUp } from '@clerk/nextjs';
 import { useState } from 'react';
 
-const useLogin = () => {
+const useRegister = () => {
   const [loading, setLoading] = useState({
     google: false,
     github: false,
   });
 
-  const { signIn } = useSignIn();
-  const handleLoginOAuth = async (provider: string) => {
+  const { signUp } = useSignUp();
+  const handleRegisterOAuth = async (provider: string) => {
     try {
       setLoading((prev) => ({ ...prev, [provider]: true }));
-      await signIn?.authenticateWithRedirect({
+      await signUp?.authenticateWithRedirect({
         strategy: `oauth_${provider}` as 'oauth_google' | 'oauth_github',
         redirectUrl: `${window.location.origin}/dashboard`,
         redirectUrlComplete: `${window.location.origin}/dashboard`,
@@ -23,7 +23,7 @@ const useLogin = () => {
     }
   };
 
-  return { handleLoginOAuth, loading };
+  return { handleRegisterOAuth, loading };
 };
 
-export default useLogin;
+export default useRegister;

@@ -1,16 +1,16 @@
-import SignUpButton from '@/components/AuthButtons/SignUpButton';
-import Login from '@/components/AuthPage/Login';
+import SignInButton from '@/components/AuthButtons/SignInButton';
+import Register from '@/components/AuthPage/Register';
 import Layout from '@/components/layout/Layout';
 import Seo from '@/components/Seo';
 
-export default function SignInPage() {
+export default function SignUpPage() {
   return (
     <Layout>
       <Seo />
       <main className='bg-dark-bg text-dark-white flex h-full min-h-[92.5vh] w-full flex-col items-center justify-center gap-4'>
-        <Login />
+        <Register />
         <p className='text-light-blue text-center font-semibold'>Or</p>
-        <SignUpButton />
+        <SignInButton />
       </main>
     </Layout>
   );
